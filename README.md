@@ -155,6 +155,7 @@ You'll need a HTTP resource similar to this:
               Takes one argument "xhr"
 
 
+Heavily based on https://github.com/Yuriy-Leonov/AWS-S3-Multipart-Upload 
 
         
 
