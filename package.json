@@ -1,0 +1,30 @@
+{
+  "name": "angular-s3-multipart-upload",
+  "version": "1.0.0",
+  "description": "Angular multipart lib for S3",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnnySheffield/angular-s3-multipart-upload.git"
+  },
+  "keywords": [
+    "angular",
+    "multipart",
+    "s3",
+    "aws"
+  ],
+  "author": "Yuriy Leonov, Johnny Sheffield",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnnySheffield/angular-s3-multipart-upload/issues"
+  },
+  "homepage": "https://github.com/JohnnySheffield/angular-s3-multipart-upload#readme"
+}
+
+ 
+
