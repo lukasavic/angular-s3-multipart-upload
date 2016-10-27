@@ -1,37 +1,35 @@
 angular.module('q.angularS3MultipartUploads', []).
 service('S3Upload', function($window, $rootScope) {
-    function extend(obj1, obj2, obj3) {
-        if (typeof obj1 == 'undefined') {
-            obj1 = {};
-        }
-        if (typeof obj3 == 'object') {
-            for (var key in obj3) {
-                obj2[key] = obj3[key];
-            }
-        }
-        for (var key2 in obj2) {
-            obj1[key2] = obj2[key2];
-        }
-        return obj1;
-    }
+	    function extend(obj1, obj2, obj3) {
+	        if (typeof obj1 == 'undefined') {
+	            obj1 = {};
+	        }
+	        if (typeof obj3 == 'object') {
+	            for (var key in obj3) {
+	                obj2[key] = obj3[key];
+	            }
+	        }
+	        for (var key2 in obj2) {
+	            obj1[key2] = obj2[key2];
+	        }
+	        return obj1;
+	    }
 
-    function joinUrlElements() {
-        var re1 = new RegExp('^\\/|\\/$', 'g'),
-            elts = Array.prototype.slice.call(arguments);
-        return elts.map(function(element) {
-            return element.replace(re1, "");
-        }).join('/');
-    }
-    var S3Upload = {};
-    //implementation
-    S3Upload.supported = !((typeof($window.File) == 'undefined') || (typeof($window.Blob) == 'undefined') || !(!!$window.Blob.prototype.webkitSlice || !!$window.Blob.prototype.mozSlice || $window.Blob.prototype.slice));
-    if (!S3Upload.supported) {
-        throw 'FileS3Upload is unsupported for you browser';
-    }
-    this.subscribe = function(scope, event, callback) {
-            var handler = $rootScope.$on(event, callback);
-            scope.$on('$destroy', handler);
-        },
+	    function joinUrlElements() {
+	        var re1 = new RegExp('^\\/|\\/$', 'g'),
+	            elts = Array.prototype.slice.call(arguments);
+	        return elts.map(function(element) {
+	            return element.replace(re1, "");
+	        }).join('/');
+	    }
+
+
+	    var S3Upload = {};
+	    //implementation
+	    S3Upload.supported = !((typeof($window.File) == 'undefined') || (typeof($window.Blob) == 'undefined') || !(!!$window.Blob.prototype.webkitSlice || !!$window.Blob.prototype.mozSlice || $window.Blob.prototype.slice));
+	    if (!S3Upload.supported) {
+	        throw 'FileS3Upload is unsupported for you browser';
+	    }
         this.c = function(c) {
             var required_keys = ['aws_url', 'file_name', 'file', 'auth_url', 'bucket', 'aws_key_id', 'auth_url_headers'],
                 missed_keys = [],
@@ -72,7 +70,7 @@ service('S3Upload', function($window, $rootScope) {
             S3Upload.subscribe = this.subscribe;
             console.log('Total count of parts = ' + S3Upload.count_of_parts);
             return S3Upload;
-            //return x.toString(16);
+      
         };
     S3Upload.base_onreadystatechange = function(setup, xhr) {
         if (xhr.readyState == 4) {
@@ -203,7 +201,6 @@ service('S3Upload', function($window, $rootScope) {
             uploadId;
         xhr.open('POST', joinUrlElements(S3Upload.config.aws_url, '/' + S3Upload.config.file_name + '?uploads'));
         xhr.setRequestHeader('Authorization', 'AWS ' + S3Upload.config.aws_key_id + ':' + signature);
-        //xhr.setRequestHeader('Access-Control-Request-Method', 'OPTIONS');
         xhr.setRequestHeader('x-amz-date', date_gmt);
         xhr.onreadystatechange = function() {
             S3Upload.base_onreadystatechange({
