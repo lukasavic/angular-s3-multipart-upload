@@ -1,5 +1,5 @@
 angular.module('q.angularS3MultipartUploads', []).
-service('S3Upload', function($window, $rootScope) {
+service('S3Upload', function($window) {
 	    function extend(obj1, obj2, obj3) {
 	        if (typeof obj1 == 'undefined') {
 	            obj1 = {};
