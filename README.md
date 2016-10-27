@@ -23,36 +23,35 @@ You'll need a HTTP resource similar to this:
 
 ##Code example
 
-				var c = {
-				    aws_url : "http://XXXXXX.amazonaws.com",
-			            file_name : 'tmp/' + file.name,
-			            file: file,
-			            auth_url : "https://my.api/signature",
-			            bucket : "XXXXXX",
-			            aws_key_id : "XXXXXXXXXXX",
-			            partSize: 6 * 1024 * 1024, // 6mb
-			            auth_url_headers : {},
-			            scope : $scope,
-				    
-			            //get status like this
-			            on_get_upload_id : function (xhr, uploadId) {
-			    		    
-			               $scope.$apply(function () {
-								$scope.sig = uploadId;
-							});
-			            }
-			         }         
-
-				$scope.myS3 = S3Upload.c(c);
-				$scope.myS3.init_multipart_upload();
-
-				// or like this
-				$scope.$on('on_part_upload', function(event, data) { 
-					console.log(data.current_part);
-					$scope.$apply(function () {
-						$scope.part = data.part_number;
-					});
+	var c = {
+	    	aws_url : "http://XXXXXX.amazonaws.com",
+            file_name : 'tmp/' + file.name,
+            file: file,
+            auth_url : "https://my.api/signature",
+            bucket : "XXXXXX",
+            aws_key_id : "XXXXXXXXXXX",
+            partSize: 6 * 1024 * 1024, // 6mb
+            auth_url_headers : {},
+            scope : $scope,
+	    
+            //get status like this
+            on_get_upload_id : function (xhr, uploadId) {  
+               $scope.$apply(function () {
+					$scope.sig = uploadId;
 				});
+            }
+      	}         
+
+	$scope.myS3 = S3Upload.c(c);
+	$scope.myS3.init_multipart_upload();
+
+	// or like this
+	$scope.$on('on_part_upload', function(event, data) { 
+		console.log(data.current_part);
+		$scope.$apply(function () {
+		$scope.part = data.part_number;
+		});
+	});
 
 ##Config
 
