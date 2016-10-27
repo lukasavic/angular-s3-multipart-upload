@@ -31,7 +31,7 @@ service('S3Upload', function($window) {
 	        throw 'FileS3Upload is unsupported for you browser';
 	    }
         this.c = function(c) {
-            var required_keys = ['aws_url', 'file_name', 'file', 'auth_url', 'bucket', 'aws_key_id', 'auth_url_headers'],
+            var required_keys = ['aws_url', 'file_name', 'file', 'auth_url', 'bucket', 'aws_key_id', 'auth_url_headers', 'scope'],
                 missed_keys = [],
                 all_keys = [];
             var key;
