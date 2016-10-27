@@ -24,7 +24,7 @@ You'll need a HTTP resource similar to this:
 ##Code example
 
 				var c = {
-						 aws_url : "http://XXXXXX.amazonaws.com",
+				    aws_url : "http://XXXXXX.amazonaws.com",
 			            file_name : 'tmp/' + file.name,
 			            file: file,
 			            auth_url : "https://my.api/signature",
@@ -33,7 +33,7 @@ You'll need a HTTP resource similar to this:
 			            partSize: 1 * 1024 * 1024, // 1mb
 			            auth_url_headers : {},
 			            scope : $scope,
-
+				    
 			            //get status like this
 			            on_get_upload_id : function (xhr, uploadId) {
 			    		    
@@ -54,7 +54,7 @@ You'll need a HTTP resource similar to this:
 					});
 				});
 
-   ##Config
+##Config
 
 
    Config should be an object and contain following:
@@ -90,9 +90,10 @@ You'll need a HTTP resource similar to this:
           - partSize: integer
               Size for one part(blob) in byte
         
-    ##[available callbacks//events]
+##[available callbacks/events]
 
-          ###[successful]
+###[successful]
+
           - on_get_upload_id: function(xhr, uploadId){} //xhr, upload_id when using events
               Fires when uploadId is got
               Takes xhr and uploadId which was provided by s3
@@ -110,7 +111,8 @@ You'll need a HTTP resource similar to this:
           - on_progress: function(total, loaded)
               Fires when part is uploaded
         
-          ###[common errors]
+###[common errors]
+
           - not_supported_error: function(){}
               It will be called if FileS3Upload is unsupported for current browser
               Doesn't take any arguments
@@ -126,7 +128,8 @@ You'll need a HTTP resource similar to this:
           - on_abort: function(xhr){}
               Fires when xhr is aborted
         
-          ###[specific errors]
+###[specific errors]
+
           If this type error is specified then common error won't be called in certain place
           - on_auth_error: function(xhr){}
               It will be called if response on "auth_url" doesn't have 200 status
