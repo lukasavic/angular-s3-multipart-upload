@@ -30,7 +30,7 @@ You'll need a HTTP resource similar to this:
 			            auth_url : "https://my.api/signature",
 			            bucket : "XXXXXX",
 			            aws_key_id : "XXXXXXXXXXX",
-			            partSize: 1 * 1024 * 1024, // 1mb
+			            partSize: 6 * 1024 * 1024, // 6mb
 			            auth_url_headers : {},
 			            scope : $scope,
 				    
