@@ -1,5 +1,9 @@
-angular.module('q.angularS3MultipartUploads', []).
+import angular from 'angular';
+
+export default angular.module('q.angularS3MultipartUploads', []).
 service('S3Upload', function($window) {
+        "ngInject";
+        
 	    function extend(obj1, obj2, obj3) {
 	        if (typeof obj1 == 'undefined') {
 	            obj1 = {};
@@ -70,7 +74,7 @@ service('S3Upload', function($window) {
             S3Upload.subscribe = this.subscribe;
             console.log('Total count of parts = ' + S3Upload.count_of_parts);
             return S3Upload;
-      
+
         };
     S3Upload.base_onreadystatechange = function(setup, xhr) {
         if (xhr.readyState == 4) {
@@ -104,7 +108,7 @@ service('S3Upload', function($window) {
         xhr.onreadystatechange = function() {
             S3Upload.base_onreadystatechange({
                 f_200: function() {
-                    //signature will be in a format as 
+                    //signature will be in a format as
                     //    {
                     //      "signature": "4FxayeX7JhFiTPl022gxEjISILk="
                     //    }
@@ -184,7 +188,7 @@ service('S3Upload', function($window) {
                     });
                     S3Upload.config.on_progress && S3Upload.config.on_progress(S3Upload.total, S3Upload.loaded);
                     // put it here becouse in future we should keep for unuploaded parts
-                    
+
                     S3Upload.config.on_part_upload && S3Upload.config.on_part_upload(xhr, ETag, S3Upload.current_part);
                     S3Upload.current_part += 1;
                     setTimeout(function() { // to avoid recursion
@@ -283,4 +287,4 @@ service('S3Upload', function($window) {
         S3Upload.xhr = xmlhttp;
         return xmlhttp;
     };
-})
+}).name;
